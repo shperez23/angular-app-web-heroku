@@ -1,0 +1,23 @@
+<mat-divider></mat-divider>
+ <br> 
+ <div fxLayout="row wrap"
+      fxFlex.xs="column"
+      fxLayoutAlign="Center"
+      fxLayoutGap="20px"
+      > 
+     <div fxFlex="100"  
+          fxFlex.sm="30"   
+          *ngFor="let blog of pageSlice"> 
+          <app-latest-tarjeta [blog]="blog"></app-latest-tarjeta> 
+ 
+     </div>
+    
+  </div>
+ <mat-paginator 
+             (page) = "OnPageChange($event)" 
+              [length]="length"
+              [pageSize]="3" 
+              [pageIndex]="0"
+              [pageSizeOptions]="[3, 6, 100]"              
+              aria-label="Select page">
+          </mat-paginator>

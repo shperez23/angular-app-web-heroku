@@ -1,0 +1,47 @@
+
+<div fxLayout="column">
+    <div>
+        <h1>Buscador de Blogs</h1>
+        <mat-divider></mat-divider>
+    </div>
+  <div fxLayout="column">
+    <h3>Buscador</h3>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Number</mat-label>
+        <input type="text"
+            placeholder="Pick one"
+            aria-label="Number"
+            matInput
+            [(ngModel)]="termino" 
+            [matAutocomplete]="auto"
+            (input)="buscando()"
+            >
+        <mat-autocomplete autoActiveFirstOption 
+                          #auto="matAutocomplete"
+                          (optionSelected)="opcionSeleccionada($event)">
+        <mat-option *ngFor="let blog of blogs" [value]="blog">
+            {{blog.title}}
+        </mat-option>
+         <mat-option value="" *ngIf="blogs.length===0 && termino.trim().length>0">
+           No se encontró nada con el término {{termino}}
+        </mat-option> 
+        </mat-autocomplete> 
+    </mat-form-field> 
+  </div> 
+<!--
+    <div>
+        <pre>
+            {{blogSeleccionado|json}}
+        </pre>
+    </div>
+
+    -->
+    
+    <div *ngIf="blogSeleccionado">
+        <app-blog-tarjeta [blog]="blogSeleccionado"></app-blog-tarjeta> 
+    </div>
+
+
+</div>
+
+

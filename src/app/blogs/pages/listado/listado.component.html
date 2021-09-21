@@ -1,0 +1,32 @@
+<div align="center"><h1>Administrar blogs </h1></div>
+<mat-divider></mat-divider>
+ <br>
+  
+
+ <div fxLayout="row wrap"
+      fxFlex.xs="column"
+      fxLayoutAlign="Center"
+      fxLayoutGap="20px"
+      > 
+     <div fxFlex="100" 
+          fxFlex.lg="40"
+          fxFlex.sm="30"   
+          *ngFor="let blog of pageSlice">
+          
+          <app-blog-tarjeta [blog]="blog"></app-blog-tarjeta>
+          
+
+     </div>
+
+     
+
+  </div>
+  <mat-paginator 
+             (page) = "OnPageChange($event)" 
+              [length]="length"
+              [pageSize]="3" 
+              [pageIndex]="0"
+              [pageSizeOptions]="[3, 6, 100]"              
+              aria-label="Select page">
+          </mat-paginator>
+

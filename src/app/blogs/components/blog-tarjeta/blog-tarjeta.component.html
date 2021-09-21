@@ -1,0 +1,25 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title> {{blog.title}}</mat-card-title>
+        <mat-card-subtitle> {{blog.description}}</mat-card-subtitle> 
+    </mat-card-header>
+    <img mat-card-image [src]="blog | imagen">
+    <mat-card-content>
+        <h3>{{blog.publishedAt}}</h3>
+        <p>
+            <strong>{{blog.content}}</strong>
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button 
+                color="warn"
+                [routerLink]="['/blogs', blog.id]">
+        Leer más..
+        </button>
+        <button mat-button 
+                color="info"
+                [routerLink]="['/blogs/editar', blog.id]">
+        Editar
+        </button>
+    </mat-card-actions>
+</mat-card>
